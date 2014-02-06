@@ -2,8 +2,6 @@
 
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
-SRC_PATH=client_src/js
-MIN_PATH=client_min/js
 
 if [ ! -d "client_src" ]
 then
@@ -56,8 +54,6 @@ function __setup_underscore__ {
 			mv $TOOLS_SUBPATH/underscore-1.5.2/underscore-min.js $TOOLS_SUBPATH/underscore.min.js &&\
 			rmdir $TOOLS_SUBPATH/underscore-1.5.2
 		ln -s $SYMLINK $SYMLINK_SUBPATH
-		ln -s ../../$SYMLINK_SUBPATH/underscore.js $SRC_PATH/underscore.js
-		ln -s ../../$SYMLINK_SUBPATH/underscore.min.js $MIN_PATH/underscore.js
 	else
 		echo "    Already available: $TOOLS_SUBPATH"
 	fi

@@ -15,7 +15,3 @@ tools/jquery:
 clean:
 	rm -rf externals/
 	rm -rf tools/
-	rm -rf client_src/js/d3.js client_min/js/d3.js
-	rm -rf client_src/js/backbone.js client_min/js/backbone.js
-	rm -rf client_src/js/underscore.js client_min/js/underscore.js
-	rm -rf client_src/js/jquery.js client_min/js/jquery.js

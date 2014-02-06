@@ -2,8 +2,6 @@
 
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
-SRC_PATH=client_src/js
-MIN_PATH=client_min/js
 
 if [ ! -d "client_src" ]
 then
@@ -55,8 +53,6 @@ function __setup_d3__ {
 			mv $TOOLS_SUBPATH/d3-3.4.1/* $TOOLS_SUBPATH &&\
 			rmdir $TOOLS_SUBPATH/d3-3.4.1
 		ln -s $SYMLINK $SYMLINK_SUBPATH
-		ln -s ../../$SYMLINK_SUBPATH/d3.js $SRC_PATH/d3.js
-		ln -s ../../$SYMLINK_SUBPATH/d3.min.js $MIN_PATH/d3.js
 	else
 		echo "    Already available: $TOOLS_SUBPATH"
 	fi

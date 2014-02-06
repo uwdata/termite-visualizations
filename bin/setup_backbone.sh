@@ -2,8 +2,6 @@
 
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
-SRC_PATH=client_src/js
-MIN_PATH=client_min/js
 
 if [ ! -d "client_src" ]
 then
@@ -56,8 +54,6 @@ function __setup_backbone__ {
 			mv $TOOLS_SUBPATH/backbone-1.1.0/backbone-min.js $TOOLS_SUBPATH/backbone.min.js &&\
 			rmdir $TOOLS_SUBPATH/backbone-1.1.0
 		ln -s $SYMLINK $SYMLINK_SUBPATH
-		ln -s ../../$SYMLINK_SUBPATH/backbone.js $SRC_PATH/backbone.js
-		ln -s ../../$SYMLINK_SUBPATH/backbone.min.js $MIN_PATH/backbone.js
 	else
 		echo "    Already available: $TOOLS_SUBPATH"
 	fi

@@ -6,7 +6,7 @@ TOOLS_PATH=tools
 if [ ! -d "client_src" ]
 then
 	echo "Usage: bin/setup_backbone.sh"
-	echo "    Download and set up Backbone JavaScript Library."
+	echo "    Download and set up Backbone javascript library."
 	echo "    This script should be run from the root of the git repo."
 	echo
 	exit -1
@@ -28,13 +28,12 @@ function __setup_backbone__ {
 	SYMLINK_SUBPATH=$TOOLS_PATH/backbone
 	SYMLINK=backbone-1.1.0
 	
-	echo "# Downloading Backbone javascript library..."
+	echo "# Downloading Backbone..."
 	if [ ! -f "$EXTERNALS_SUBPATH/backbone-1.1.0.zip" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/jashkenas/backbone/archive/1.1.0.zip > $EXTERNALS_SUBPATH/backbone-1.1.0.zip
-
-		echo "    Extracting Backbone license..."
+		echo "    Extracting license..."
 		unzip $EXTERNALS_SUBPATH/backbone-1.1.0.zip backbone-1.1.0/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/backbone-1.1.0/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/backbone-1.1.0
@@ -47,7 +46,7 @@ function __setup_backbone__ {
 	if [ ! -d "$TOOLS_SUBPATH" ]
 	then
 		__create_folder__ $TOOLS_SUBPATH "    "
-		echo "    Uncompressing Backbone..."
+		echo "    Uncompressing..."
 		unzip $EXTERNALS_SUBPATH/backbone-1.1.0.zip backbone-1.1.0/backbone.js -d $TOOLS_SUBPATH &&\
 		unzip $EXTERNALS_SUBPATH/backbone-1.1.0.zip backbone-1.1.0/backbone-min.js -d $TOOLS_SUBPATH &&\
 			mv $TOOLS_SUBPATH/backbone-1.1.0/backbone.js $TOOLS_SUBPATH &&\

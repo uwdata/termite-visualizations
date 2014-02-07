@@ -1,4 +1,4 @@
-all: tools/d3 tools/backbone tools/underscore tools/jquery tools/font-awesome
+all: tools/d3 tools/backbone tools/underscore tools/jquery tools/font-awesome tools/closure tools/yui
 
 tools/d3:
 	bin/setup_d3.sh
@@ -14,6 +14,12 @@ tools/jquery:
 
 tools/font-awesome:
 	bin/setup_fontawesome.sh
+
+tools/closure:
+	bin/setup_closure.sh
+
+tools/yui:
+	bin/setup_yui.sh
 
 clean:
 	rm -rf externals/

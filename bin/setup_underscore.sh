@@ -6,7 +6,7 @@ TOOLS_PATH=tools
 if [ ! -d "client_src" ]
 then
 	echo "Usage: bin/setup_underscore.sh"
-	echo "    Download and set up Underscore JavaScript Library."
+	echo "    Download and set up Underscore javascript library."
 	echo "    This script should be run from the root of the git repo."
 	echo
 	exit -1
@@ -28,13 +28,12 @@ function __setup_underscore__ {
 	SYMLINK_SUBPATH=$TOOLS_PATH/underscore
 	SYMLINK=underscore-1.5.2
 	
-	echo "# Downloading Underscore javascript library..."
+	echo "# Downloading Underscore..."
 	if [ ! -f "$EXTERNALS_SUBPATH/underscore-1.5.2.zip" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/jashkenas/underscore/archive/1.5.2.zip > $EXTERNALS_SUBPATH/underscore-1.5.2.zip
-
-		echo "    Extracting Underscore license..."
+		echo "    Extracting license..."
 		unzip $EXTERNALS_SUBPATH/underscore-1.5.2.zip underscore-1.5.2/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/underscore-1.5.2/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/underscore-1.5.2
@@ -47,7 +46,7 @@ function __setup_underscore__ {
 	if [ ! -d "$TOOLS_SUBPATH" ]
 	then
 		__create_folder__ $TOOLS_SUBPATH "    "
-		echo "    Uncompressing Underscore..."
+		echo "    Uncompressing..."
 		unzip $EXTERNALS_SUBPATH/underscore-1.5.2.zip underscore-1.5.2/underscore.js -d $TOOLS_SUBPATH &&\
 		unzip $EXTERNALS_SUBPATH/underscore-1.5.2.zip underscore-1.5.2/underscore-min.js -d $TOOLS_SUBPATH &&\
 			mv $TOOLS_SUBPATH/underscore-1.5.2/underscore.js $TOOLS_SUBPATH &&\

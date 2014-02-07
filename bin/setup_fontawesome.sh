@@ -6,7 +6,7 @@ TOOLS_PATH=tools
 if [ ! -d "client_src" ]
 then
 	echo "Usage: bin/setup_fontawesome.sh"
-	echo "    Download and set up Font Awesome Library."
+	echo "    Download and set up Font Awesome."
 	echo "    This script should be run from the root of the git repo."
 	echo
 	exit -1
@@ -28,7 +28,7 @@ function __setup_fontawesome__ {
 	SYMLINK_SUBPATH=$TOOLS_PATH/font-awesome
 	SYMLINK=font-awesome-4.0.3
 	
-	echo "# Downloading Font Awesome library..."
+	echo "# Downloading Font Awesome..."
 	if [ ! -f "$EXTERNALS_SUBPATH/font-awesome-4.0.3.zip" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
@@ -42,7 +42,7 @@ function __setup_fontawesome__ {
 	if [ ! -d "$TOOLS_SUBPATH" ]
 	then
 		__create_folder__ $TOOLS_SUBPATH "    "
-		echo "    Uncompressing Font Awesome..."
+		echo "    Uncompressing..."
 		unzip $EXTERNALS_SUBPATH/font-awesome-4.0.3.zip -d $TOOLS_PATH
 		ln -s $SYMLINK $SYMLINK_SUBPATH
 	else

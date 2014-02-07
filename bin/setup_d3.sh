@@ -6,7 +6,7 @@ TOOLS_PATH=tools
 if [ ! -d "client_src" ]
 then
 	echo "Usage: bin/setup_d3.sh"
-	echo "    Download and set up D3 JavaScript Visualization Library."
+	echo "    Download and set up D3 javascript library."
 	echo "    This script should be run from the root of the git repo."
 	echo
 	exit -1
@@ -28,13 +28,12 @@ function __setup_d3__ {
 	SYMLINK_SUBPATH=$TOOLS_PATH/d3
 	SYMLINK=d3-3.4.1
 	
-	echo "# Downloading D3 javascript library..."
+	echo "# Downloading D3..."
 	if [ ! -f "$EXTERNALS_SUBPATH/d3-3.4.1.zip" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/mbostock/d3/archive/v3.4.1.zip > $EXTERNALS_SUBPATH/d3-3.4.1.zip
-
-		echo "    Extracting D3 license..."
+		echo "    Extracting license..."
 		unzip $EXTERNALS_SUBPATH/d3-3.4.1.zip d3-3.4.1/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/d3-3.4.1/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/d3-3.4.1
@@ -47,7 +46,7 @@ function __setup_d3__ {
 	if [ ! -d "$TOOLS_SUBPATH" ]
 	then
 		__create_folder__ $TOOLS_SUBPATH "    "
-		echo "    Uncompressing D3..."
+		echo "    Uncompressing..."
 		unzip $EXTERNALS_SUBPATH/d3-3.4.1.zip d3-3.4.1/d3.js -d $TOOLS_SUBPATH &&\
 		unzip $EXTERNALS_SUBPATH/d3-3.4.1.zip d3-3.4.1/d3.min.js -d $TOOLS_SUBPATH &&\
 			mv $TOOLS_SUBPATH/d3-3.4.1/* $TOOLS_SUBPATH &&\

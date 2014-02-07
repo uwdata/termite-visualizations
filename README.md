@@ -18,6 +18,12 @@ To launch the visualization server, execute the following command. A dialogue bo
 ./start_client.sh
 ```
 
+Make sure you also launch the corresponding data server.  See [Termite Data Server](https://github.com/uwdata/termite-server).  The topic model visualizations will be available at:
+
+```
+http://127.0.0.1:8080/
+```
+
 Credits
 -------
 

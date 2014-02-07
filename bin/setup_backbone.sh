@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_backbone.sh"
 	echo "    Download and set up Backbone javascript library."
@@ -29,7 +29,7 @@ function __setup_backbone__ {
 	SYMLINK=backbone-1.1.0
 	
 	echo "# Downloading Backbone..."
-	if [ ! -f "$EXTERNALS_SUBPATH/backbone-1.1.0.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/jashkenas/backbone/archive/1.1.0.zip > $EXTERNALS_SUBPATH/backbone-1.1.0.zip
@@ -37,6 +37,7 @@ function __setup_backbone__ {
 		unzip $EXTERNALS_SUBPATH/backbone-1.1.0.zip backbone-1.1.0/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/backbone-1.1.0/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/backbone-1.1.0
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/backbone-1.1.0.zip"
 	fi

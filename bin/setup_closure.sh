@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_closure.sh"
 	echo "    Download and set up Closure compiler."
@@ -27,13 +27,14 @@ function __setup_closure__ {
 	TOOLS_SUBPATH=$TOOLS_PATH/closure
 
 	echo "# Downloading Closure..."
-	if [ ! -f "$EXTERNALS_SUBPATH/compiler-latest.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH
 		curl --insecure --location http://dl.google.com/closure-compiler/compiler-latest.zip > $EXTERNALS_SUBPATH/compiler-latest.zip
 		echo "    Extracting license..."
 		unzip $EXTERNALS_SUBPATH/compiler-latest.zip COPYING -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/COPYING $EXTERNALS_SUBPATH/LICENSE
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/compiler-latest.zip"
 	fi

@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_yui.sh"
 	echo "    Download and set up YUI compiler."
@@ -29,7 +29,7 @@ function __setup_yui__ {
 	SYMLINK=yui-2.4.8
 
 	echo "# Downloading YUI..."
-	if [ ! -f "$EXTERNALS_SUBPATH/yuicompressor-2.4.8.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH
 		curl --insecure --location https://github.com/yui/yuicompressor/archive/v2.4.8.zip > $EXTERNALS_SUBPATH/yuicompressor-2.4.8.zip
@@ -37,8 +37,9 @@ function __setup_yui__ {
 		unzip $EXTERNALS_SUBPATH/yuicompressor-2.4.8.zip yuicompressor-2.4.8/LICENSE.TXT -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/yuicompressor-2.4.8/LICENSE.TXT $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/yuicompressor-2.4.8
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
-		echo "    Already downloaded: $EXTERNALS_SUBPATH/compiler-latest.zip"
+		echo "    Already downloaded: $EXTERNALS_SUBPATH/yuicompressor-2.4.8.zip"
 	fi
 	echo
 

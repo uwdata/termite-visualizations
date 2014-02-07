@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_d3.sh"
 	echo "    Download and set up D3 javascript library."
@@ -29,7 +29,7 @@ function __setup_d3__ {
 	SYMLINK=d3-3.4.1
 	
 	echo "# Downloading D3..."
-	if [ ! -f "$EXTERNALS_SUBPATH/d3-3.4.1.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/mbostock/d3/archive/v3.4.1.zip > $EXTERNALS_SUBPATH/d3-3.4.1.zip
@@ -37,6 +37,7 @@ function __setup_d3__ {
 		unzip $EXTERNALS_SUBPATH/d3-3.4.1.zip d3-3.4.1/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/d3-3.4.1/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/d3-3.4.1
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/d3-3.4.1.zip"
 	fi

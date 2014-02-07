@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_underscore.sh"
 	echo "    Download and set up Underscore javascript library."
@@ -29,7 +29,7 @@ function __setup_underscore__ {
 	SYMLINK=underscore-1.5.2
 	
 	echo "# Downloading Underscore..."
-	if [ ! -f "$EXTERNALS_SUBPATH/underscore-1.5.2.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/jashkenas/underscore/archive/1.5.2.zip > $EXTERNALS_SUBPATH/underscore-1.5.2.zip
@@ -37,6 +37,7 @@ function __setup_underscore__ {
 		unzip $EXTERNALS_SUBPATH/underscore-1.5.2.zip underscore-1.5.2/LICENSE -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/underscore-1.5.2/LICENSE $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/underscore-1.5.2
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/underscore-1.5.2.zip"
 	fi

@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_jquery.sh"
 	echo "    Download and set up jQuery javascript library."
@@ -29,7 +29,7 @@ function __setup_jquery__ {
 	SYMLINK=jquery-2.1.0
 	
 	echo "# Downloading jQuery..."
-	if [ ! -f "$EXTERNALS_SUBPATH/jquery-master.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location https://github.com/jquery/jquery/archive/2.1.0.zip > $EXTERNALS_SUBPATH/jquery-2.1.0.zip
@@ -37,6 +37,7 @@ function __setup_jquery__ {
 		unzip $EXTERNALS_SUBPATH/jquery-2.1.0.zip jquery-2.1.0/MIT-LICENSE.txt -d $EXTERNALS_SUBPATH &&\
 			mv $EXTERNALS_SUBPATH/jquery-2.1.0/MIT-LICENSE.txt $EXTERNALS_SUBPATH &&\
 			rmdir $EXTERNALS_SUBPATH/jquery-2.1.0
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/jquery-2.1.0.zip"
 	fi

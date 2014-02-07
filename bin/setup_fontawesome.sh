@@ -3,7 +3,7 @@
 EXTERNALS_PATH=externals
 TOOLS_PATH=tools
 
-if [ ! -d "client_src" ]
+if [ ! -d "client_src" ] || [ ! -d "landing_src" ]
 then
 	echo "Usage: bin/setup_fontawesome.sh"
 	echo "    Download and set up Font Awesome."
@@ -29,10 +29,11 @@ function __setup_fontawesome__ {
 	SYMLINK=font-awesome-4.0.3
 	
 	echo "# Downloading Font Awesome..."
-	if [ ! -f "$EXTERNALS_SUBPATH/font-awesome-4.0.3.zip" ]
+	if [ ! -d "$EXTERNALS_SUBPATH" ]
 	then
 		__create_folder__ $EXTERNALS_SUBPATH "    "
 		curl --insecure --location http://fontawesome.io/assets/font-awesome-4.0.3.zip > $EXTERNALS_SUBPATH/font-awesome-4.0.3.zip
+		echo "You may delete downloaded files in this folder without affecting the topic model visualizations." > $EXTERNALS_SUBPATH/safe-to-delete.txt
 	else
 		echo "    Already downloaded: $EXTERNALS_SUBPATH/font-awesome-4.0.3.zip"
 	fi

@@ -23,10 +23,12 @@ Credits
 
 Termite requires the use of the following software. We thank their respective authors for developing and distributing these tools.
 
-  * [D3]() by Michael Bostock
-  * Backbone
-  * Underscore
-  * jQuery
+  * [D3](http://d3js.org) by Mike Bostock
+  * [Backbone](http://backbonejs.org) by Jeremy Ashkenas, DocumentCloud Inc.
+  * [Underscore](http://underscorejs.org) by Jeremy Ashkenas, DocumentCloud Inc.
+  * [jQuery](http://jquery.com) by jQuery Foundation
+  * [Closure](https://developers.google.com/closure/compiler) by Google
+  * [YUI](http://yuilibrary.com) by Yahoo!
   * [Font Awesome](http://fontawesome.io) by Dave Gandy  
   * [The web2py Web Framework](http://web2py.com) by Massimo Di Pierro, et al.
 

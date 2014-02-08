@@ -1,8 +1,7 @@
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Termite | Topic Modeling Visualization</title>
-	
+{{extend 'template.html'}}
+{{include 'visualizations.html'}}
+{{import json}}
+
 	<link rel="stylesheet" type="text/css" href="css/MatrixView.css">
 	<link rel="stylesheet" type="text/css" href="css/NavigationView.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
@@ -63,6 +62,14 @@ a:hover {
 }
 </style>
 <script type="text/javascript">
+$(document).ready( function() {
+	dm = new DataManager({
+		http_host : "{{response.write(http_host,escape=False)}}",
+		visualization : {{response.write(json.dumps(visualization,encoding='utf-8'),escape=False)}},
+		visualizations : {{response.write(json.dumps(visualizations,encoding='utf-8'),escape=False)}},
+	});
+});
+/*
 $(document).ready(function() {
 	var defaultDataID = "20newsgroups";
 	var defaultEntryID = 0;
@@ -115,9 +122,10 @@ $(document).ready(function() {
 			onChangeDataID();
 	});
 });
+*/
 </script>
-</head>
-<body>
+
+<div class="body">
 	<div class="container">
 		<select class="dataIDs"></select>
 		<select class="entryIDs"></select>
@@ -126,6 +134,6 @@ $(document).ready(function() {
 	<p><a href="http://jason.chuang.ca" target="_blank">Jason Chuang</a>, 
 		<a href="http://vis.stanford.edu" target="_blank">Vis</a> &amp; 
 		<a href="http://nlp.stanford.edu" target="_blank">NLP</a>, 
-		<a href="http://cs.stanford.edu" target="_blank">Stanford University</a>, 2013</p>
-</body>
-</html>
+		<a href="http://cs.stanford.edu" target="_blank">Stanford University</a>, 2013
+	</p>
+</div>

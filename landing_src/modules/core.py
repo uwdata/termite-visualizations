@@ -8,96 +8,14 @@ class TermiteCore:
 		self.request = request
 		self.response = response
 	
-	def GetConfigs( self ):
-		def GetServer():
-			return self.request.env['HTTP_HOST']
-		
-		def GetDataset():
-			return self.request.application
-		
-		def GetModel():
-			return self.request.controller
-		
-		def GetAttribute():
-			return self.request.function
-		
-		def GetDatasets( dataset ):
-			FOLDER_EXCLUSIONS = frozenset( [ 'admin', 'examples', 'welcome', 'init' ] )
-			applications_parent = self.request.env['applications_parent']
-			applications_path = '{}/applications'.format( applications_parent )
-			folders = []
-			for folder in os.listdir( applications_path ):
-				applications_subpath = '{}/{}'.format( applications_path, folder )
-				if os.path.isdir( applications_subpath ):
-					if folder not in FOLDER_EXCLUSIONS:
-						folders.append( folder )
-			folders = sorted( folders )
-			return folders
-		
-		def GetModels( dataset, model ):
-			if dataset == 'init':
-				return None
-			
-			app_data_path = '{}/data'.format( self.request.folder )
-			folders = []
-			for folder in os.listdir( app_data_path ):
-				app_data_subpath = '{}/{}'.format( app_data_path, folder )
-				if os.path.isdir( app_data_subpath ):
-					folders.append( folder )
-			folders = sorted( folders )
-			return folders
-		
-		def GetAttributes( dataset, model, attribute ):
-			if dataset == 'init':
-				return None
-			if model == 'default':
-				return None
-			
-			if model == 'lda':
-				return [
-					'DocIndex',
-					'TermIndex',
-					'TopicIndex',
-					'TermTopicMatrix',
-					'DocTopicMatrix',
-					'TopicCooccurrence'
-				]
-			elif model == 'corpus':
-				return [
-					'DocMeta',
-					'TermFreqs',
-					'TermCoFreqs'
-				]
-			else:
-				return []
-		
-		server = GetServer()
-		dataset = GetDataset()
-		datasets = GetDatasets( dataset )
-		model = GetModel()
-		models = GetModels( dataset, model )
-		attribute = GetAttribute()
-		attributes = GetAttributes( dataset, model, attribute )
-		
-		configs = {
-			'server' : server,
-			'dataset' : dataset,
-			'datasets' : datasets,
-			'model' : model,
-			'models' : models,
-			'attribute' : attribute,
-			'attributes' : attributes
-		}
-		return configs
-	
 	def IsDebugMode( self ):
 		return 'debug' in self.request.vars
 	
-	def GenerateResponse( self, params = {}, keysAndValues = {} ):
+	def GenerateResponse( self, keysAndValues = {} ):
 		if self.IsDebugMode():
 			return self.GenerateDebugResponse()
 		else:
-			return self.GenerateNormalResponse( params, keysAndValues )
+			return self.GenerateNormalResponse( keysAndValues )
 	
 	def GenerateDebugResponse( self ):
 		def GetEnv( env ):
@@ -131,10 +49,13 @@ class TermiteCore:
 		return json.dumps( info, encoding = 'utf-8', indent = 2, sort_keys = True )
 	
 	
-	def GenerateNormalResponse( self, params, keysAndValues = {} ):
+	def GenerateNormalResponse( self, keysAndValues = {} ):
 		data = {
-			'params' : params,
-			'configs' : self.GetConfigs()
+			'http_host' : self.request.env['HTTP_HOST'],
+			'js_files' : [],
+			'css_files' : [],
+			'visualizations' : [ 'TermTopicMatrix' ],
+			'visualization' : None
 		}
 		data.update( keysAndValues )
 		return data

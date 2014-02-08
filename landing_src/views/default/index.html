@@ -1,24 +1,29 @@
 {{extend 'template.html'}}
 {{include 'server.html'}}
+{{import json}}
 
 <script type="text/javascript">
 $(document).ready( function() {
-	home = new Home();
-	home.load()
+	dm = new DataManager({
+		http_host : "{{response.write(http_host,escape=False)}}",
+		visualization : {{response.write(json.dumps(visualization,encoding='utf-8'),escape=False)}},
+		visualizations : {{response.write(json.dumps(visualizations,encoding='utf-8'),escape=False)}},
+	});
 });
 </script>
 
-<div class="info">
-	<div class="heading">Visualizations</div>
-	<div class="visualizations VisualizationsView">
-		<a href="vis/TermTopicMatrix">
-			<div class="visualization">
-				<div style="vertical-align: top; padding: 5px">Term-Topic Matrix</div>
-			</div></a><a><div class="visualization">
-				<div style="vertical-align: top; padding: 5px">Group-in-a-Box</div>
-			</div></a><a><div class="visualization">
-				<div style="vertical-align: top; padding: 5px">Document Viewer</div>
-			</div>
-		</a>
-	</div>
+<div class="body">
+	<div class="heading">Termite | Topic Model Visualization</div>
+	<div class="content">Termite is a visualization tool for inspecting the output of statistical topic models. The tool contains two components:</div>
+	<div class="content" style="margin-left:10px;margin-top:5px">(1) a data server for hosting the content of a topic model</div>
+	<div class="content" style="margin-left:10px;margin-top:3px">(2) a client interface for visualizing the topic model in a web browser</div>
+
+	<div class="heading">Connect to a data server...</div>
+	<div class="content">Server URL = <span class="ServerView"></span></div>
+
+	<div class="heading HideOnNoServer">Choose a dataset...</div>
+	<div class="content HideOnNoServer">Dataset = <span class="DatasetsView"></span></div>
+
+	<div class="heading HideOnNoDataset">Open a visualization...</div>
+	<div class="content Blocks HideOnNoDataset"></div>
 </div>

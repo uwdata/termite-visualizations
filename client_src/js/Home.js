@@ -58,6 +58,9 @@ HomeView.prototype.initialize = function() {
 HomeView.prototype.initServer = function() {
 	var layer = this.layer.server;
 	this.io.server = layer.append( "input" )
+		.style( "font-family", "Georgia, serif" )
+		.style( "font-size", "11pt" )
+		.style( "padding", "2px 5px" )
 		.attr( "type", "text" )
 		.on( "keyup", this.delaySetServer.bind(this) );
 	this.io.refresh = layer.append( "i" )

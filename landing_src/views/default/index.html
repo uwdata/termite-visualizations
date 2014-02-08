@@ -1,0 +1,24 @@
+{{extend 'template.html'}}
+{{include 'server.html'}}
+
+<script type="text/javascript">
+$(document).ready( function() {
+	home = new Home();
+	home.load()
+});
+</script>
+
+<div class="info">
+	<div class="heading">Visualizations</div>
+	<div class="visualizations VisualizationsView">
+		<a href="vis/TermTopicMatrix">
+			<div class="visualization">
+				<div style="vertical-align: top; padding: 5px">Term-Topic Matrix</div>
+			</div></a><a><div class="visualization">
+				<div style="vertical-align: top; padding: 5px">Group-in-a-Box</div>
+			</div></a><a><div class="visualization">
+				<div style="vertical-align: top; padding: 5px">Document Viewer</div>
+			</div>
+		</a>
+	</div>
+</div>

@@ -67,6 +67,8 @@ function __setup_web2py__ {
 		ln -s ../../../landing_src/controllers $TOOLS_SUBPATH/applications/init/controllers
 		ln -s ../../../landing_src/modules $TOOLS_SUBPATH/applications/init/modules
 		ln -s ../../../landing_src/static $TOOLS_SUBPATH/applications/init/static
+		echo "    Creating the vis app..."
+		ln -s init $TOOLS_SUBPATH/applications/vis
 	else
 		echo "    Already available: $TOOLS_SUBPATH"
 	fi

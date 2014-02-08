@@ -1,0 +1,32 @@
+<script type="text/javascript">
+var onSelectDataset = function( srcElement ) {
+	if ( srcElement.value !== "NONE" )
+		window.location.href = "http://{{=configs['server']}}/" + srcElement.value;
+	else
+		window.location.href = "http://{{=configs['server']}}";
+};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="head">
+	<div class="title">Topic Model Visualization</div>
+	<div class="sep">http://</div>
+	<div class="subtitle ServerView"></div>
+	<div class="sep">/</div>
+	<div class="subtitle DatasetsView">
+	</div>
+</div>

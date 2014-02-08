@@ -1,0 +1,144 @@
+body {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font-family: Georgia, serif;
+	font-size: 10pt;
+}
+
+div {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+div.head {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 15px;
+	border-bottom: 1px solid #aaa;
+	box-shadow: 0 0 30px #ccc;
+	color: #333;
+	background: #ccc;
+}
+div.head div {
+	position: static;
+	display: inline-block;
+}
+div.head div.title {
+	margin: 0 2em 0 0.5em;
+	font-size: 12pt;
+	color: #000;
+	font-weight: bold;
+}
+div.head div.sep {
+	margin: 0 0.5em;
+	font-size: 9pt;
+}
+div.head div.subtitle {
+	font-size: 12pt;
+}
+div.head a {
+	color: #333;
+	text-decoration: none;
+}
+div.head a:hover {
+	color: #933;
+	text-decoration: underline;
+}
+
+div.body {
+	margin: 80px 50px 30px 50px;
+	color: #aaa;
+}
+div.body div.heading {
+	margin: 20px 0 2px 0;
+	font-size: 14pt;
+}
+div.body div.heading span.extra {
+	font-size: 8pt;
+}
+div.body div.params {
+	display: inline-block;
+	padding: 15px;
+	margin: 5px 0;
+	border: 1px solid #ccc;
+	min-width: 320px;
+	color: #000;
+}
+div.body div.params div.param {
+	font-size: 10pt;
+}
+div.body div.params div.extra {
+	margin: 10px 0 0 0;
+	color: #999;
+	font-size: 10pt;
+}
+div.body div.content {
+	display: inline-block;
+	padding: 15px;
+	margin: 5px 0;
+	border: 1px solid #ccc;
+	min-width: 640px;
+	min-height: 320px;
+	white-space: pre;
+	font-family: monospace;
+	font-size: 10pt;
+	color: #000;
+}
+div.body a {
+	color: #aaa;
+	text-decoration: none;
+}
+div.body a:hover {
+	color: #933;
+	text-decoration: underline;
+}
+
+div.info {
+	margin: 100px 50px 30px 50px;
+	line-height: 1.35em;
+	color: #333;
+}
+div.info div.heading {
+	margin: 2em 0 0 0;
+	font-size: 14pt;
+	color: #000;
+}
+div.info div.content {
+	margin: 1em 0 0 0;
+	width: 400px;
+	font-size: 10pt;
+}
+div.info div.visualizations {
+	margin: 1em 0 0 0;
+	font-size: 10pt;
+}
+div.info div.visualizations div.visualization {
+	display: inline-block; 
+	height: 200px;
+	width: 200px;
+	color: #ccc;
+	border: 1px solid #ccc;
+	margin: 0 8px 8px 0;
+}
+div.info div.visualizations a {
+	color: #666;
+	text-decoration: none;
+}
+div.info div.visualizations a:hover {
+	color: #c66;
+	text-decoration: none;
+}
+div.info div.visualizations a div.visualization {
+	color: #666;
+	border-color: #666;
+	background: #fff;
+}
+div.info div.visualizations a:hover div.visualization {
+	color: #c66;
+	border-color: #c66;
+	background: #fee;
+}

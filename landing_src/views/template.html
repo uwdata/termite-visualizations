@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<title>Termite | Topic Model Visualization</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="{{=URL('static','css/font-awesome.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{=URL('static','css/termite.css')}}">
+	{{for css_file in css_files:}}
+		<link rel="stylesheet" type="text/css" href="{{=URL('static',css_file)}}">
+	{{pass}}
+	<script type="text/javascript" src="{{=URL('static','js/d3.js')}}"></script>
+	<script type="text/javascript" src="{{=URL('static','js/jquery.js')}}"></script>
+	<script type="text/javascript" src="{{=URL('static','js/underscore.js')}}"></script>
+	<script type="text/javascript" src="{{=URL('static','js/backbone.js')}}"></script>
+	{{for js_file in js_files:}}
+		<script type="text/javascript" src="{{=URL('static',js_file)}}"></script>
+	{{pass}}
+</head>
+<body>
+	{{include}}
+</body>
+</html>

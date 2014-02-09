@@ -1,0 +1,26 @@
+div.TermTopicMatrixView div {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	border: none;
+	box-shadow: none;
+	cursor: default;
+	pointer-events: none;
+}
+div.TermTopicMatrixView div.container {
+	font-family: Gill Sans;
+	background: #fff;
+	border: 1px solid #ccc;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+div.TermTopicMatrixView div.canvas {
+	position : absolute;
+}
+div.TermTopicMatrixView div.canvas * {
+	position : absolute;
+}

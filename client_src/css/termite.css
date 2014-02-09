@@ -76,3 +76,12 @@ div.body div.Blocks div.Block {
 	border: 1px solid #666;
 	margin: 0 8px 8px 0;
 }
+
+div.body a {
+	color: #c66;
+	text-decoration: none;
+}
+div.body a:hover {
+	color: #933;
+	text-decoration: underline;
+}

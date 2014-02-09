@@ -7,7 +7,7 @@ The tool contains two components:
   * A web server for processing the output of a topic model and distributing the content over the internet.
   * A client interface for visualizing the topic model in a web browser.
 
-This repository contains the client component for visualizing topic model outputs and for distributing the visualizations over the web on a web2py server. The visualizations and the middleware code are developed by [Jason Chuang](http://jason.chuang.ca) and Ashley Jin, and distributed under the BSD-3 license.
+This repository contains the client component for visualizing topic model outputs and hosting web-based visualizations. The visualizations and the middleware code are developed by [Jason Chuang](http://jason.chuang.ca) and Ashley Jin, and distributed under the BSD-3 license.
 
 Launch this visualization server
 --------------------------------

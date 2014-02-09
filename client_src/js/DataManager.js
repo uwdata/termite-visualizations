@@ -6,22 +6,19 @@ var DataManager = Backbone.Model.extend({
 		dataset : null,
 		datasets : [],
 		visualization : null,
-		visualizations : [
-			"TermTopicMatrix"
-		],
+		visualizations : [],
 		ghostVisualizations : [
-			"Group-In-A-Box",
-			"Document Viewer"
+			"DocumentViewer"
 		]
 	}
 });
 
 DataManager.prototype.initialize = function( options ) {
-	this.refreshServer = _.debounce( this.__refreshServer, 10, false );
+	this.refreshServer = _.debounce( this.__refreshServer, 50, false );
 	this.setURLAndQueryString = _.debounce( this.__setURLAndQueryString, 10, false );
 	this.view = new DataManagerView({ model : this });
 	this.set( this.getQueryString() );
-	this.refreshServer( true );
+	this.refreshServer( false );
 	this.on( "change:server change:dataset", this.refreshServer, this );
 	this.on( "change:dataset change:visualization", this.setURLAndQueryString, this );
 };
@@ -37,7 +34,7 @@ DataManager.prototype.url = function() {
 	return url;
 };
 
-DataManager.prototype.__refreshServer = function( isInit ) {
+DataManager.prototype.__refreshServer = function( setURL ) {
 	var success = function( model, response, options ) {
 		var datasets = [];
 		if ( response.configs.datasets ) {
@@ -52,7 +49,7 @@ DataManager.prototype.__refreshServer = function( isInit ) {
 			"datasets" : datasets
 		});
 		console.log( "Connected to data server: ", url );
-		if ( !isInit ) {
+		if ( setURL ) {
 			this.setURLAndQueryString();
 		}
 	}.bind(this);
@@ -63,7 +60,7 @@ DataManager.prototype.__refreshServer = function( isInit ) {
 			"datasets" : []
 		});
 		console.log( "[ERROR] Cannot connect to data server: ", url );
-		if ( !isInit ) {
+		if ( setURL ) {
 			this.setURLAndQueryString();
 		}
 	}.bind(this);
@@ -233,15 +230,15 @@ DataManagerView.prototype.updateVisualizations = function() {
 	elems.exit().remove();
 	elems.enter().append( "option" );
 	elems
-		.attr( "selected", function(d) { return d === visualization ? "selected" : null } )
-		.attr( "value", function(d) { return (d===null) ? "NONE" : d } )
-		.html( function(d) { return (d===null) ? "&mdash; Visualization &mdash;" : d } );
+		.attr( "selected", function(d) { return (d===visualization) ? "selected" : null } )
+		.attr( "value", function(d) { return d ? d : "NONE" } )
+		.html( function(d) { return d ? d : "&mdash; Visualization &mdash;" } );
 };
 
 DataManagerView.prototype.updateVisualization = function() {
 	var visualization = this.model.get( "visualization" );
 	this.layers.visualizations
-		.each( function() { d3.select(this).mode().value = (visualization===null) ? "NONE" : visualization } );
+		.each( function() { d3.select(this).mode().value = visualization ? visualization : "NONE" } );
 };
 
 DataManagerView.prototype.initBlocks = function() {
@@ -279,9 +276,9 @@ DataManagerView.prototype.setServer = function( value ) {
 };
 
 DataManagerView.prototype.setDataset = function( value ) {
-	this.model.set( "dataset", ( value === "NONE" ) ? null : value );
+	this.model.set( "dataset", value==="NONE" ? null : value );
 };
 
 DataManagerView.prototype.setVisualization = function( value ) {
-	this.model.set( "visualization", ( value === "NONE" ) ? null : value  );
+	this.model.set( "visualization", value==="NONE" ? null : value );
 };

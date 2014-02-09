@@ -54,7 +54,9 @@ class TermiteCore:
 			'http_host' : self.request.env['HTTP_HOST'],
 			'js_files' : [],
 			'css_files' : [],
-			'visualizations' : [ 'TermTopicMatrix' ],
+			'visualizations' : [
+				"TermTopicMatrix"
+			],
 			'visualization' : None
 		}
 		data.update( keysAndValues )

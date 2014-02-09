@@ -69,19 +69,26 @@ div.body div.Blocks {
 }
 div.body div.Blocks div.Block {
 	display: inline-block; 
-	height: 200px;
-	width: 200px;
+	height: 240px;
+	width: 240px;
+	overflow: hidden;
 	color: #666;
 	cursor: pointer;
 	border: 1px solid #666;
 	margin: 0 8px 8px 0;
 }
 
-div.body a {
-	color: #c66;
+div.credits {
+	margin-top: 30px;
+	color: #999;
+	font-size: 8pt;
+	line-height: 10pt;
+}
+div.credits a {
+	color: #999;
 	text-decoration: none;
 }
-div.body a:hover {
+div.credits a:hover {
 	color: #933;
 	text-decoration: underline;
 }

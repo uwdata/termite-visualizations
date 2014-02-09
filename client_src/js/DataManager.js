@@ -261,25 +261,35 @@
 		var visualizations = this.model.get( "visualizations" );
 		var ghostVisualizations = this.model.get( "ghostVisualizations" );
 		var elems = this.layers.blocks.selectAll( "div.visualization" ).data( visualizations );
-		elems.enter().append( "div" )
+		var newElems = elems.enter().append( "div" )
 			.attr( "class", "Block visualization" )
-			.style( "vertical-align", "top" )
-			.style( "padding", "5px" )
 			.on( "click", function(d) { this.setVisualization(d) }.bind(this) )
-			.on( "mouseover", function() { d3.select(this).style( "color", "#c66" ).style( "border-color", "#c66" ) } )
-			.on( "mouseout", function() { d3.select(this).style( "color", null ).style( "border-color", null ) } );
-		elems
-			.text( function(d) { return d } )
+			.on( "mouseover", function() { d3.select(this).style( "color", "#933" ).style( "border-color", "#933" ).select("img").style( "opacity", 0.4 ) } )
+			.on( "mouseout", function() { d3.select(this).style( "color", null ).style( "border-color", null ).select("img").style( "opacity", 0.2 ) } )
+			.append( "div" )
+				.style( "position", "absolute" );
+		newElems.append( "img" )
+			.attr( "src", function() { return this.model.get("static").replace( "FILENAME", "images/TermTopicMatrix.png" ) }.bind(this) )
+			.style( "position", "absolute" )
+			.style( "opacity", 0.2 );
+		newElems.append( "div" )
+			.style( "position", "absolute" )
+			.style( "padding", "12px" )
+			.style( "font-weight", "bold" )
+			.text( function(d) { return d } );
 		var elems = this.layers.blocks.selectAll( "div.ghostVisualization" ).data( ghostVisualizations );
-		elems.enter().append( "div" )
+		var newElems = elems.enter().append( "div" )
 			.attr( "class", "Block ghostVisualization" )
-			.style( "vertical-align", "top" )
-			.style( "padding", "5px" )
 			.style( "color", "#ccc" )
 			.style( "border-color", "#ccc" )
 			.style( "cursor", "default" )
-		elems
-			.text( function(d) { return d } )
+			.append( "div" )
+				.style( "position", "absolute" );
+		newElems.append( "div" )
+			.style( "position", "absolute" )
+			.style( "padding", "12px" )
+			.style( "font-weight", "bold" )
+			.text( function(d) { return d } );
 	};
 
 	DataManagerView.prototype.setServer = function( value ) {

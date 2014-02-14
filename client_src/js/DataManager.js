@@ -188,7 +188,7 @@
 			.style( "border", "1px solid #999" )
 			.style( "width", "125px" )
 			.attr( "type", "text" )
-			.on( "keyup", function() { this.setServer(d3.event.srcElement.value) }.bind(this) );
+			.on( "keyup", function() { this.setServer(d3.event.target.value) }.bind(this) );
 		this.updateServer();
 	};
 	DataManagerView.prototype.updateServer = function() {
@@ -205,7 +205,7 @@
 
 	DataManagerView.prototype.initDatasets = function() {
 		this.layers.datasets.append( "select" )
-			.on( "change", function() { this.setDataset(d3.event.srcElement.value) }.bind(this) );
+			.on( "change", function() { this.setDataset(d3.event.target.value) }.bind(this) );
 		this.updateDatasets();
 	};
 	DataManagerView.prototype.updateDatasets = function() {
@@ -232,7 +232,7 @@
 
 	DataManagerView.prototype.initVisualizations = function() {
 		this.layers.visualizations.append( "select" )
-			.on( "change", function() { this.setVisualization(d3.event.srcElement.value) }.bind(this) );
+			.on( "change", function() { this.setVisualization(d3.event.target.value) }.bind(this) );
 		this.updateVisualizations();
 	};
 	DataManagerView.prototype.updateVisualizations = function() {

@@ -44,7 +44,7 @@ System requirements
 Known issues
 ------------
 
-"Modern web browsers" can have multiple interpretations. See [D3 Browser Support](https://github.com/mbostock/d3/wiki#wiki-browser-support) and [jQuery Browser Support](http://jquery.com/browser-support/) for basic requirements. Internally, we develop and test the visualizations in Chrome
+"Modern web browsers" can have multiple interpretations. See [D3 Browser Support](https://github.com/mbostock/d3/wiki#wiki-browser-support) and [jQuery Browser Support](http://jquery.com/browser-support/) for basic requirements. Internally, we develop and test the visualizations in Chrome.
 
 Credits
 -------

@@ -1,16 +1,20 @@
-Termite Topic Model Visualizations
-==================================
+Topic Model Visualizations
+==========================
 
-Termite is a visualization tool for inspecting the output of statistical topic models.
+Termite is a visual analysis tool for inspecting the output of statistical topic models.
 
 The tool contains two components:
-  * A web server for processing the output of a topic model and distributing the content over the internet.
-  * A client interface for visualizing the topic model in a web browser.
+  * **[Termite Data Server](http://github.com/uwdata/termite-data-server)** for processing the output of topic models and providing the content as a web service
+  * **[Termite Visualizations](http://github.com/uwdata/termite-visualizations)** for visualizing topic model outputs in a web browser
 
-This repository contains the client component for visualizing topic model outputs and hosting web-based visualizations. The visualizations and the middleware code are developed by [Jason Chuang](http://jason.chuang.ca) and Ashley Jin, and distributed under the BSD-3 license.
+This repository contains the web-based visualizations, which include:
+  * a web server for distributing the visualizations
+  * various interactive visualizations
 
-Launch this visualization server
---------------------------------
+This software is developed by [Jason Chuang](http://jason.chuang.ca) and Ashley Jin, and distributed under the BSD-3 license.
+
+Launch visualizations
+---------------------
 
 To launch the visualization server, execute the following command. A dialogue box will appear. Click on "start server" to proceed.
 
@@ -18,11 +22,29 @@ To launch the visualization server, execute the following command. A dialogue bo
 ./start_client.sh
 ```
 
-Make sure you also launch the corresponding data server.  See [Termite Data Server](https://github.com/uwdata/termite-server).  The topic model visualizations will be available at:
+Make sure you also launch or connect to a corresponding [Termite Data Server](https://github.com/uwdata/termite-server).
+
+The visualizations will be available at:
 
 ```
 http://127.0.0.1:8080/
 ```
+
+Active Research Project
+=======================
+
+This is an active research project. While we would like to support as many users as possible, we are constrained by available resources. Below are the system requirements and known issues.
+
+System requirements
+-------------------
+
+  * **Python 2.7** for web2py and server scripts
+  * **Modern web browsers** for the interactive visualizations
+
+Known issues
+------------
+
+"Modern web browsers" can have multiple interpretations. See [D3 Browser Support](https://github.com/mbostock/d3/wiki#wiki-browser-support) and [jQuery Browser Support](http://jquery.com/browser-support/) for basic requirements. Internally, we develop and test the visualizations in Chrome
 
 Credits
 -------
